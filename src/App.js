@@ -2,16 +2,23 @@
 import './App.css';
 import Header from './components/Header';
 import MainContent from './components/MainContent';
-// import Footer from './components/Footer';
+import React from 'react';
 
 
 function App() {
+  // function toggleTheme(theme) {
+  // function toggleTheme() {
+  //   console.log('theme');
+  // }
+  let [theme, setTheme] = React.useState('light');
+  function toggleTheme() {
+    setTheme((theme === 'light') ? 'dark' : 'light');
+  }
   return (
-    <div className="App">
+    <div className="App" data-theme={theme}>
       <div className="container">
-        <Header></Header>
+        <Header handleClick={toggleTheme} theme={theme}></Header>
         <MainContent />
-        {/* <Footer /> */}
       </div>
     </div>
   );

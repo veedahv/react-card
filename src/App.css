@@ -5,9 +5,28 @@
   padding: 0;
 }
 
+:root {
+  --container-bg: #282d35;
+  --header-bg: #21222a;
+  --text-color: #ffffff;
+}
+
+.App[data-theme='light'] {
+  --container-bg: #ffffff;
+  --header-bg: #ffffff;
+  --text-color: #2B283A;
+}
+
+.App[data-theme='dark'] {
+  --container-bg: #282d35;
+  --header-bg: #21222a;
+  --text-color: #ffffff;
+}
+
 .App {
   background-color: #ddd;
-  color: #ffffff;
+  /* color: #ffffff; */
+  color: var(--text-color);
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -17,7 +36,8 @@
 .container {
   max-width: 600px;
   margin: auto;
-  background: #282d35;
+  /* background: #282d35; */
+  background: var(--container-bg) url('./assets/react-bg.png') center right no-repeat;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -27,12 +47,14 @@
 }
 
 .App-header {
-  background: #21222a;
+  /* background: #21222a; */
+  background: var(--header-bg);
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   padding: 25px 40px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, .2);
 }
 
 .nav {
@@ -43,6 +65,16 @@
   font-weight: 600;
 }
 
+.nav-items {
+  /* width: 100%; */
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  /* justify-content: space-between; */
+  font-weight: 400;
+  font-size: 12px;
+}
+
 .logo-container {
   list-style: none;
   display: flex;
@@ -51,6 +83,42 @@
   color: #61dafb;
   font-weight: 700;
   font-size: 22px;
+}
+
+/* .toggle-text {
+  opacity: 1;
+} */
+
+.toggle-text.active {
+  opacity: .7;
+}
+
+.toggleBtn {
+  width: 32px;
+  height: 17px;
+  border: none;
+  outline: none;
+  border-radius: 30px;
+  background-color: var(--text-color);
+  padding: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.App[data-theme='light'] .toggleBtn {
+  justify-content: flex-start;
+}
+
+.App[data-theme='dark'] .toggleBtn {
+  justify-content: flex-end;
+}
+
+.toggle-ball {
+  width: 15px;
+  height: 15px;
+  background-color: var(--header-bg);
+  border-radius: 15px;
 }
 
 .main-container {
